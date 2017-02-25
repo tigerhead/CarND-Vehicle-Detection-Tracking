@@ -2,7 +2,7 @@
 
 ## Vehicle Detection Project
 
-This project 5 in Udacity Self-driving car nano-degree project term 1. A software pipeline is implemented to identify vehicles in a video from a front-facing camera on a car in this project. The goals / steps of this project are the following:
+This is project 5 in Udacity Self-driving car nano-degree project term 1. A software pipeline is implemented to identify vehicles in a video from a front-facing camera on a car in this project. The goals / steps of this project are the following:
     
      1. Apply a color transform and append binned color features, as well as histograms of color
     
