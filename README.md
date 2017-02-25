@@ -20,11 +20,17 @@ This is project 5 in Udacity Self-driving car nano-degree project term 1. A soft
 
 List of files and folders:
 P5.ipynb  -  The main jupyter notebook file which has step by step description and code spinet for this project
-P5-Test-Classifier-HSV.ipynb, P5-Test-Classifier-RGB.ipynb, P5-Test-Classifier-HSL.ipynb, P5-Test-Classifier-LUV.ipynb, P5-Test-Classifier-YCrCb.ipynb are jupyter notebook files to test features extracted with different color sapce and differet classifier.
+
+P5-Test-Classifier-HSV.ipynb, 
+P5-Test-Classifier-RGB.ipynb, 
+P5-Test-Classifier-HSL.ipynb, 
+P5-Test-Classifier-LUV.ipynb, 
+P5-Test-Classifier-YCrCb.ipynb -- jupyter notebook files to test features extracted with different color sapce and differet classifier.
 
 P5_solution_v5.mp4 - Solution video
 
 test_images folder  - Contains all test images
+
 output_images folder - Contains all output image in the project to demo the pipeline
 
 
