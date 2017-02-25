@@ -94,9 +94,14 @@ Features are extracted for each iamge in provided dataset. Feature vectors are n
 
 Slide widow technique is used to search vehicle on images. The image to be processed is divided small windows. Code can be found in code cell No. 13 in P5.ipynb. Here is an example which devided image into (64, 64) size windows
 
+
 ![sliding_Windows](/output_images/sliding_win_ex.png)
 
+
+
 Trained classifier is uesd to classify each window and windows classified as vehicle will be saved to be used to mark the position of vehicle in the image. Code can be found in code cell No. 12 in P5.ipynb. Here is an example of one test image marked with windows classified as car, window size is (64, 64)
+
+
 ![single_Windows](/output_images/car_sin_win_ex.png)
 
 ---
@@ -109,19 +114,24 @@ Multiple sildeing window sizes are used to search vehicles in the image to ensur
 
 ![multi_Windows](/output_images/car_multi_win_ex.png)
 
+
 #### Reducing false positive and combine multiple boxes.
 
 All positve boxes are clollected as demostrated in example above.   From the positive detections,  I created a heatmap and then thresholded that map to identify true vehicle positions and eliminate false positive. Code can be found in code cell No. 16 in P5.ipynb. Here is example of heat map and threshold heat map. Th false positive which is shade in a tree is elimimated.
 
 ![heat_map](/output_images/heatmap_ex.png)
 
+
 ![threshold_heat_map](/output_images/heatmap_thr_ex.png)
+
 
 label from scipy.ndimage.measurements is used to find contineous nonzero areas and label them starting from 1 and set the background as 0. And min and max point will be picked will be used to draw single box around detected vehicle. Code can be found in code cell No. 18 in P5.ipynb. Here is an example:
 
 ![label_heat_map](/output_images/label_heatmap_ex.png)
 
+
 ![final_result](/output_images/result_ex.png)
+
 
 #### Assemble pipeline
 Following steps are assembled together to implement the pipeline to process single image frame in the video:
@@ -135,18 +145,25 @@ Following steps are assembled together to implement the pipeline to process sing
  Code can be found in code cell No. 20 in P5.ipynb
 
  Here are test images processed by the pipeline:
+ 
 
 ![final_result_1](/output_images/result_ex_1.png)
 
+
 ![final_result_2](/output_images/result_ex_2.png)
+
 
 ![final_result_3](/output_images/result_ex_3.png)
 
+
 ![final_result_4](/output_images/result_ex_4.png)
+
 
 ![final_result_5](/output_images/result_ex_5.png)
 
+
 ![final_result_6](/output_images/result_ex_6.png)
+
 
 #### Apply pipeline to video
 
