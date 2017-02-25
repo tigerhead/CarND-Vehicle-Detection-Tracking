@@ -125,7 +125,8 @@ label from scipy.ndimage.measurements is used to find contineous nonzero areas a
 
 #### Assemble pipeline
 Following steps are assembled together to implement the pipeline to process single image frame in the video:
-    1) Use liding-window technique to identify postive windows contains vehicle object. 
+
+    1) Use liding-window technique to identify postive windows contains vehicle object.     
     
     2) Use heatmap technique to eliminate negative positive detection.
     
