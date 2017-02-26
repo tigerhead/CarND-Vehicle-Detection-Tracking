@@ -60,14 +60,14 @@ Spatial size used in the project:  (16, 16) # Spatial binning dimensions
 
 #### Histograms of Color
 
-Color is an important feature for vihecle detection,  so color histgram features are etracted. Code can be found in code cell No. 4 in P5.ipynb. Number of histogram bins used in this project is 32.
+Color is an important feature for vehicle detection,  so color histogram features are extracted. Code can be found in code cell No. 4 in P5.ipynb. Number of histogram bins used in this project is 32.
 
 #### Histogram of Oriented Gradients (HOG)
 I choose to use dataset provided by Udactiy for classifier training and testing. All the `vehicle` and `non-vehicle` images are loaded to a dictionary. Code can be found in code cell No. 5 in P5.ipynb. Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
 ![car-noncar](/output_images/car_noncar_ex.png)
 
-A car can be distinguished from a non-car by looking at its edges. HOG will compute the gradients from blocks of cells. Then, a histogram is constructed with these gradient values. skimage.feature.hog function is used to extract HOG feature from image. I then explored different color spaces like RGB, LUV, HSV, HLS, YCrCb and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  Code can be found in code cell No. 6 in P5.ipynb. The comparison between different color space and classifier can be found in P5-Test-Classifier-HSV.ipynb, P5-Test-Classifier-RGB.ipynb, P5-Test-Classifier-HSL.ipynb, P5-Test-Classifier-LUV.ipynb, P5-Test-Classifier-YCrCb.ipynb. To balance accuracy of classifier and training time, I choose to use follwoing HOG feature extration parameters:
+A car can be distinguished from a non-car by looking at its edges. HOG will compute the gradients from blocks of cells. Then, a histogram is constructed with these gradient values. skimage.feature.hog function is used to extract HOG feature from image. I then explored different color spaces like RGB, LUV, HSV, HLS, YCrCb and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  Code can be found in code cell No. 6 in P5.ipynb. The comparison between different color space and classifier can be found in P5-Test-Classifier-HSV.ipynb, P5-Test-Classifier-RGB.ipynb, P5-Test-Classifier-HSL.ipynb, P5-Test-Classifier-LUV.ipynb, P5-Test-Classifier-YCrCb.ipynb. To balance accuracy of classifier and training time, I choose to use following HOG feature extraction parameters:
 
 color_space = 'YCrCb' 
 
@@ -77,7 +77,7 @@ pix_per_cell = 8 # HOG pixels per cell
 
 cell_per_block = 2 # HOG cells per block
 
-hog_channel = "ALL" # Can be 0, 1, 2, or "ALL"
+hog_channel = "ALL" # Include 'Y', 'Cr', 'Cb'
 
 
 Here are examples of car and non car HOG feature image:
@@ -92,19 +92,19 @@ Here are examples of car and non car HOG feature image:
 
 LinearSVC, SVM, RandomForestClassifier, DecisionTreeClassifier tree and AdaBoostClassifier  provided by sklearn are tested with different color spaces: like RGB, LUV, HSV, HLS, YCrCb. The result can be found in different notebook. For example: RGB with different classifier, see result in P5-Test-Classifier-RGB.ipynb. It looks like YCrCb space with LinearSVC classifier gave best result. So in final project report, YCrCb color space and LinearSVC classifier is used. 
 
-Features are extracted for each iamge in provided dataset. Feature vectors are normalized. Dataset are randomly slit intot train and test dataset. Code can be found in code cell No. 9, 10 and 11 in P5.ipynb. The accuray for the classifier is 0.9845
+Features are extracted for each image in provided dataset. Feature vectors are normalized. Dataset are randomly split into train and test dataset. Code can be found in code cell No. 9, 10 and 11 in P5.ipynb. The accuracy for the classifier is 0.9845
 
 
 ### Sliding Window Technique
 
-Slide widow technique is used to search vehicle on images. The image to be processed is divided small windows. Code can be found in code cell No. 13 in P5.ipynb. Here is an example which devided image into (64, 64) size windows
+Slide widow technique is used to search vehicle on images. The image to be processed is divided small windows. Code can be found in code cell No. 13 in P5.ipynb. Here is an sample image divided into window of (64, 64)
 
 
 ![sliding_Windows](/output_images/sliding_win_ex.png)
 
 
 
-Trained classifier is uesd to classify each window and windows classified as vehicle will be saved to be used to mark the position of vehicle in the image. Code can be found in code cell No. 12 in P5.ipynb. Here is an example of one test image marked with windows classified as car, window size is (64, 64)
+Trained classifier is usesd to classify each window and windows classified as vehicle will be saved to be used to mark position of vehicle in the image. Code can be found in code cell No. 12 in P5.ipynb. Here is an example of one test image marked with windows classified as car, window size is (64, 64)
 
 
 ![single_Windows](/output_images/car_sin_win_ex.png)
@@ -115,22 +115,27 @@ Trained classifier is uesd to classify each window and windows classified as veh
 
 #### Multiple sliding windows
 
-Multiple sildeing window sizes are used to search vehicles in the image to ensure vehicle are not missed. Code can be found in code cell No. 14 in P5.ipynb. I tried different combination of window sizes and overlap rate, finally chose follow three sizes: (64, 64), (96, 96), (128, 128) and overlap rate 0.75. Here is an example with dected vehicles marked by different sizes of windows:
+Multiple sliding window sizes are used to search vehicles in the image to ensure vehicle are not missed. Code can be found in code cell No. 14 in P5.ipynb. I tried different combination of window sizes and overlap rate, finally chose follow three sizes: (64, 64), (96, 96), (128, 128) and overlap rate 0.75. Here is an example with dected vehicles marked by different sizes of windows:
 
 ![multi_Windows](/output_images/car_mul_win_ex.png)
 
 
 #### Reducing false positive and combine multiple boxes.
 
-All positve boxes are clollected as demostrated in example above.   From the positive detections,  I created a heatmap and then thresholded that map to identify true vehicle positions and eliminate false positive. Code can be found in code cell No. 16 in P5.ipynb. Here is example of heat map and threshold heat map. The false positive which is shade in a tree is elimimated.
+All positive boxes are collected as demonstrated in example above.   From the positive detections,  I created a heatmap and then thresholded that map to identify true vehicle positions and eliminate false positive. Code can be found in code cell No. 16 in P5.ipynb. Here is example of heat map and threshold heat map. The false positive which is shade in a tree is eliminated.
+
+Heat map with all positive windows
 
 ![heat_map](/output_images/heatmap_ex.png)
+
+
+Theshloded Heat map(False positive window eliminated)
 
 
 ![threshold_heat_map](/output_images/heatmap_thr_ex.png)
 
 
-label from scipy.ndimage.measurements is used to find contineous nonzero areas and label them starting from 1 and set the background as 0. And min and max point will be picked will be used to draw single box around detected vehicle. Code can be found in code cell No. 18 in P5.ipynb. Here is an example:
+scipy.ndimage.measurements.label is used to find continuous nonzero areas and label them starting from 1 and set the background as 0. And min and max point will be picked will be used to draw single box around detected vehicle. Code can be found in code cell No. 18 in P5.ipynb. Here is an example:
 
 ![label_heat_map](/output_images/label_heatmap_ex.png)
 
@@ -141,7 +146,7 @@ label from scipy.ndimage.measurements is used to find contineous nonzero areas a
 #### Assemble pipeline
 Following steps are assembled together to implement the pipeline to process single image frame in the video:
 
-    1) Use liding-window technique to identify postive windows contains vehicle object.     
+    1) Use sliding-window technique to identify positive windows contains vehicle object.          
     
     2) Use heatmap technique to eliminate negative positive detection.
     
