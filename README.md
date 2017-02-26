@@ -6,7 +6,9 @@ This is project 5 in Udacity Self-driving car nano-degree project term 1. A soft
     
      1. Apply a color transform and append binned color features, as well as histograms of color
     
-    2. Perform a Histogram of Oriented Gradients (HOG) feature extraction on a labeled training set of images and train a classifier Linear SVM classifier, append HOG vector to color feature vector   
+    2. Perform a Histogram of Oriented Gradients (HOG) feature extraction on a labeled training 
+       set of images and train a classifier Linear SVM classifier, append HOG vector to 
+       color feature vector   
     
     3. Extract Features from training images to train selected classier
     
@@ -14,9 +16,11 @@ This is project 5 in Udacity Self-driving car nano-degree project term 1. A soft
     
     5. Use heatmap technique to eliminate negative positive detection.
     
-    6. Use label to find continuous non-zero area in threshold heat map and draw single box for detected vehicles
+    6. Use label to find continuous non-zero area in threshold heat map and draw single 
+       box for detected vehicles
     
-    7. Run the pipeline created from step 4-6 on a video stream  and draw outlined box on vehicle in the video
+    7. Run the pipeline created from step 4-6 on a video stream  and 
+       draw outlined box on vehicle in the video
 
 List of files and folders:
 P5.ipynb  -  The main jupyter notebook file which has step by step description and code spinet for this project
