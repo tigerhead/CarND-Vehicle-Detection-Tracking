@@ -189,11 +189,27 @@ It can also be viewed on Youtube: https://youtu.be/VpdrtnY0if0
 
 Here are some challenges and thoughts that I had in this project:
 
-    1. Feature extraction to classify vehicle and non-vehicle. In this project, color histogram, spatial binning of colors, and histogram of oriented gradient(HOG) features were extracted and used as features to detect vehicle. There are so many image feature can be used for this purpose, so find proper features is a very challenge work. In this project, those thee types of feature used is effective but it may not be robust enough for other situation.
+    1. Feature extraction to classify vehicle and non-vehicle. In this project, color histogram,
+    spatial binning of colors, and histogram of oriented gradient(HOG) features were extracted 
+    and used as features to detect vehicle. There are so many image feature can be used for 
+    this purpose, so finding proper features is a very challenge work. 
+    In this project, those thee types of feature used is effective but it may not be robust 
+    enough for other situation.
 
-    2. Classifier search and training. I tried several classifier from sklearn. It looks like the linear SVM classifier introduced in course material perform best. I could get high accuracy in Rainforest classifier but it doesn't perform well in real detection in test image. I am not sure why. As another thought, convolution neural network may be used to classify vehicle which may provide better result. And it can be next step to carry this project further.
+    2. Classifier search and training. I tried several classifier from sklearn. It looks like 
+    the linear SVM classifier introduced in course material perform best. I could get high accuracy 
+    in Rainforest classifier but it doesn't perform well in real detection in test image. 
+    I am not sure why. As another thought, convolution neural network may be used to classify 
+    vehicle which may provide better result. And it can be next step to carry this project further.
 
-    3. False positive reducing. The accuracy of classifier is not nigh enough, only 0.9845. I would like to improve it to over 0.99. The provided training dataset is not well balanced. I found generally, it detected dark color car better than light color car in all classifier that I tested. So the classifier tends to detect shaded tree or dark area on separation block as vehicle. Playing with different sliding window size, and heat map threshold may be able to eliminate them but making the training data more balanced and generalizing classifier may be a better approach
+    3. False positive reducing. The accuracy of classifier is not nigh enough, only 0.9845. 
+    I would like to improve it to over 0.99. The provided training dataset is not well balanced. I found generally, 
+    it detected dark color car better than light color car in all classifier that I tested. 
+    So the classifier tends to detect shaded tree or dark area on separation block as vehicle. 
+    Playing with different sliding window size, and heat map threshold may be able to eliminate them 
+    but making the training data more balanced and generalizing classifier may be a better approach
     
-    4. HOG feature extraction is computation intensive operation. Calculating HOG for whole image once and extract feature for sliding windows from the calculated feature array will be much more effetive way to extract HOG feature. That is another improvement that can be done. 
+    4. HOG feature extraction is computation intensive operation. Calculating HOG for whole image 
+    once and extract feature for sliding windows from the calculated feature array will be much more 
+    effetive way to extract HOG feature. That is another improvement that can be done. 
 
