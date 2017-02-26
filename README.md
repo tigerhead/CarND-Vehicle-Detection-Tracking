@@ -115,14 +115,14 @@ Trained classifier is uesd to classify each window and windows classified as veh
 
 #### Multiple sliding windows
 
-Multiple sildeing window sizes are used to search vehicles in the image to ensure vehicle are not missed. Code can be found in code cell No. 14 in P5.ipynb. I tried different combination of window sizes and overlap rate, finally chose follow three sizes: (64, 64), (96, 96), (128, 128) and overlap rate 0.75. Here is another example:
+Multiple sildeing window sizes are used to search vehicles in the image to ensure vehicle are not missed. Code can be found in code cell No. 14 in P5.ipynb. I tried different combination of window sizes and overlap rate, finally chose follow three sizes: (64, 64), (96, 96), (128, 128) and overlap rate 0.75. Here is an example with dected vehicles marked by different sizes of windows:
 
 ![multi_Windows](/output_images/car_mul_win_ex.png)
 
 
 #### Reducing false positive and combine multiple boxes.
 
-All positve boxes are clollected as demostrated in example above.   From the positive detections,  I created a heatmap and then thresholded that map to identify true vehicle positions and eliminate false positive. Code can be found in code cell No. 16 in P5.ipynb. Here is example of heat map and threshold heat map. Th false positive which is shade in a tree is elimimated.
+All positve boxes are clollected as demostrated in example above.   From the positive detections,  I created a heatmap and then thresholded that map to identify true vehicle positions and eliminate false positive. Code can be found in code cell No. 16 in P5.ipynb. Here is example of heat map and threshold heat map. The false positive which is shade in a tree is elimimated.
 
 ![heat_map](/output_images/heatmap_ex.png)
 
