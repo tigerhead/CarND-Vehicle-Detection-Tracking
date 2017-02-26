@@ -117,7 +117,7 @@ Trained classifier is uesd to classify each window and windows classified as veh
 
 Multiple sildeing window sizes are used to search vehicles in the image to ensure vehicle are not missed. Code can be found in code cell No. 14 in P5.ipynb. I tried different combination of window sizes and overlap rate, finally chose follow three sizes: (64, 64), (96, 96), (128, 128) and overlap rate 0.75. Here is another example:
 
-![multi_Windows](/output_images/car_multi_win_ex.png)
+![multi_Windows](/output_images/car_mul_win_ex.png)
 
 
 #### Reducing false positive and combine multiple boxes.
